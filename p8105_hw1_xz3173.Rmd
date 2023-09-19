@@ -23,4 +23,68 @@ Load the early_january_weather dataset.
 data("early_january_weather")
 ```
 
+Write a short description of the dataset using inline R code; accessing the dataset help file can be informative. 
+
+* the variables in this dataset, including names/values of important variables
+
+
+```{r}
+names(early_january_weather)
+
+```
+
+```{r}
+early_january_weather
+
+```
+
+```{r}
+head(early_january_weather)
+```
+
+
+```{r}
+tail(early_january_weather)
+```
+
+
+```{r}
+skimr::skim(early_january_weather)
+```
+
+* the size of the dataset
+nrow = number of rows in the dataset
+ncol = number of columns in the dataset
+
+```{r}
+nrow(early_january_weather)
+ncol(early_january_weather)
+```
+
+* the mean temperature
+
+```{r}
+mean_temp = early_january_weather$temp
+mean(mean_temp)
+```
+
+
+Make a scatterlot of temp (y) vs time_hour (x); color points using the humid variable (adding color = ...) inside of aes in your ggplot code should help). Describe patterns that are apparent in this plot.
+
+```{r}
+plot_df = tibble(
+  x = early_january_weather$time_hour,
+  y = early_january_weather$temp
+)
+
+ggplot(plot_df, aes(x = x, y = y)) + geom_point()
+```
+
+Export your scatterplot to your project directory using ggsave.
+
+
+```{r}
+ggsave("scatter_plot.pdf")
+```
+
 # Problem 2
