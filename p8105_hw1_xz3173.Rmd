@@ -5,10 +5,22 @@ date: "2023-09-19"
 output: github_document
 ---
 
-```{r, echo = FALSE, message = FALSE}
+```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
 ```
 
 # Problem 1
+
+Load the moderndive library.
+
+```{r}
+library(moderndive)
+```
+
+Load the early_january_weather dataset.
+
+```{r}
+data("early_january_weather")
+```
 
 # Problem 2
