@@ -106,11 +106,25 @@ data_frame = tibble(
   vec_char = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
   vec_factor = factor(rep(c("Level 1", "Level 2", "Level 3"), length.out = 10))
 )
-  
+
 data_frame
 ```
 
 Try to take the mean of each variable in your dataframe. What works and what doesn’t?
+
+```{r}
+mean(data_frame$random_sample)
+mean(data_frame$vec_logical)
+mean(data_frame$vec_char)
+mean(data_frame$vec_factor)
+```
+
+" Mean" works on Random_sample and vec_logical, do not work on vec_char and vec_factor.
+
+"Mean" use for numeric variables.
+
+Random_sample is classified as numeric.
+Vec_logical is classified as logical vector, which contains True/Falswe values, as arithmetic.
 
 Hint: for now, to take the mean of a variable in a dataframe, you need to pull the variable out of the dataframe. Try loading the tidyverse and using the pull function.
 
@@ -119,5 +133,53 @@ library(tidyverse)
 ```
 
 
+
+
+```{r, eval = FALSE, message = FALSE}
+data_frame %>%
+  pull(random_sample) %>%
+  mean(random_sample)
+```
+
+```{r, eval = FALSE, message = FALSE}
+data_frame %>%
+  pull(vec_logical) %>%
+  mean(vec_logical)
+```
+
+```{r}
+data_frame %>%
+  pull(vec_char) %>%
+  mean(vec_char)
+```
+
+
+
+```{r}
+data_frame %>%
+  pull(vec_factor) %>%
+  mean(vec_factor)
+```
+
+
+"Pull" can not apply on random_sample.
+"Pull" use for charactere or factor variables.
+
+
+In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
+
+
+```{r, eval = FALSE, message = FALSE}
+mean(as.numeric(data_frame$random_sample))
+mean(as.numeric(data_frame$vec_logical))
+mean(as.numeric(data_frame$vec_char))
+mean(as.numeric(data_frame$vec_factor))
+```
+
+Outputs come back with NA values, which is not meaningful.
+
+* Numeric variables can calculate "mean".
+* Logical variables, can be convert to numeric (0 or 1, True or False), and caluculate "mean".
+* Character variables and factor variables are not meaningful, when calculate "mean".
 
 
