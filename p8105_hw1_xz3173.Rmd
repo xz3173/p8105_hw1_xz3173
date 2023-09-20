@@ -28,6 +28,10 @@ Write a short description of the dataset using inline R code; accessing the data
 * the variables in this dataset, including names/values of important variables
 
 
+
+`This dataset has 15 variables. This dataset is conducted from January 1, 2013 to January 15, 2013.`
+
+
 ```{r}
 names(early_january_weather)
 ```
@@ -84,11 +88,7 @@ ggplot(plot_df, aes(x = x, y = y, color = color)) + geom_point()
 
 
 
-
-
-
 Export your scatterplot to your project directory using ggsave.
-
 
 ```{r}
 ggsave("scatter_plot.pdf")
@@ -144,30 +144,26 @@ library(tidyverse)
 
 
 
-```{r, eval = FALSE, message = FALSE}
+```{r}
 data_frame %>%
-  pull(random_sample) %>%
-  mean(random_sample)
-```
-
-```{r, eval = FALSE, message = FALSE}
-data_frame %>%
-  pull(vec_logical) %>%
-  mean(vec_logical)
+  mean(pull(random_sample))
 ```
 
 ```{r}
 data_frame %>%
-  pull(vec_char) %>%
-  mean(vec_char)
+  mean(pull(vec_logical))
+```
+
+```{r}
+data_frame %>%
+  mean(pull(vec_char)) 
 ```
 
 
 
 ```{r}
 data_frame %>%
-  pull(vec_factor) %>%
-  mean(vec_factor)
+  mean(pull(vec_factor))
 ```
 
 
