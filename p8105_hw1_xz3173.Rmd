@@ -98,23 +98,23 @@ Create a data frame comprised of:
 
 ```{r}
 set.seed(1234)
-data_frame = tibble(
+my_dataset = tibble(
   random_sample = rnorm(10),
   vec_logical = c(random_sample > 0),
   vec_char = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
   vec_factor = factor(rep(c("Level 1", "Level 2", "Level 3"), length.out = 10))
 )
 
-data_frame
+my_dataset
 ```
 
 Try to take the mean of each variable in your dataframe. What works and what doesn’t?
 
 ```{r}
-mean(data_frame$random_sample)
-mean(data_frame$vec_logical)
-mean(data_frame$vec_char)
-mean(data_frame$vec_factor)
+mean(my_dataset[["random_sample"]])
+mean(my_dataset[["vec_logical"]])
+mean(my_dataset[["vec_char"]])
+mean(my_dataset[["vec_factor"]])
 ```
 
 " Mean" works on Random_sample and vec_logical, do not work on vec_char and vec_factor.
@@ -131,10 +131,8 @@ library(tidyverse)
 ```
 
 
-
-
 ```{r}
-data_frame %>%
+my_dataset %>%
   mean(pull(random_sample))
 ```
 
