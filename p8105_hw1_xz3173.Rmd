@@ -7,6 +7,7 @@ output: github_document
 
 ```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
+library(dplyr)
 ```
 
 # Problem 1
@@ -27,11 +28,6 @@ Write a short description of the dataset using inline R code; accessing the data
 
 * the variables in this dataset, including names/values of important variables
 
-
-
-`This dataset has 15 variables. This dataset is conducted from January 1, 2013 to January 15, 2013.`
-
-
 ```{r}
 names(early_january_weather)
 ```
@@ -39,16 +35,6 @@ names(early_january_weather)
 ```{r}
 early_january_weather
 ```
-
-```{r}
-head(early_january_weather)
-```
-
-
-```{r}
-tail(early_january_weather)
-```
-
 
 ```{r}
 skimr::skim(early_january_weather)
@@ -66,12 +52,12 @@ ncol(early_january_weather)
 * the mean temperature
 
 ```{r}
-mean_temp = early_january_weather$temp
+mean_temp = early_january_weather[["temp"]]
 mean(mean_temp)
 ```
 
 
-Make a scatterlot of temp (y) vs time_hour (x); color points using the humid variable (adding color = ...) inside of aes in your ggplot code should help). Describe patterns that are apparent in this plot.
+Make a scatterlot of temp (y) vs time_hour (x); color points using the humid variable (adding color = ...) inside of aes in your ggplot code should help). 
 
 
 
@@ -84,6 +70,8 @@ plot_df = tibble(
 
 ggplot(plot_df, aes(x = x, y = y, color = color)) + geom_point()
 ```
+
+Describe patterns that are apparent in this plot.
 
 
 
